@@ -1,19 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+
+// custom components
+import AddButt from './AddButton';
+import inpBox from './editBox';
+
+type taskEmpty = {
+  empty: boolean;
+};
+
+const initialTaskEmpty: taskEmpty = {
+  empty: true,
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+
+      //if innit task true, then text will prompt user to enter tasks
+  return ( 
+    <View style={styles.taskContainer}>
+      {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
+      <AddButt title="Add Tasks" />
+      <inpBox input ={}/>
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  taskContainer: {
+    width: '100%',
+    height: '50%', // Modify this line
+    flex: 4,
+    backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
   },
