@@ -1,5 +1,5 @@
-to finish today:
-- add crud support for tasks
-- create basic backend server can improve later
-- setup mongodb and link
-wq
+to finish over break/before work:
+- create delete button
+- add task components for app
+- connect database with backend
+- connect backend with frontend

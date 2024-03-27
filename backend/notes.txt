@@ -5,3 +5,8 @@ mongosh to start mongo shell
 
 using python connector for mongo and fastapi for routing
 
+ip addr to see address for eth network  interface()
+
+uses uvicorn to run, typically on port 8000
+start app with uvicorn to see info
+

@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {View, TextInput,Text, StyleSheet} from 'react-native';
 
+require('dotenv').config()
+
+
 export default function InpBox({ input, taskList }: { input: string, taskList : String[] }) {
     const [inputValue, setInputValue] = useState('');
 
@@ -14,7 +17,16 @@ export default function InpBox({ input, taskList }: { input: string, taskList : 
     };
 
     function sendToBack(sendInput: string) {
-        //send to backend
+        let url = process.env.BACKEND_ROUTE || '';
+        if (url) {
+            let request = new XMLHttpRequest();
+            request.open("GET", url);
+            // Rest of your code...
+        }
+        else {
+            console.error("Backend route is not defined");
+        }
+
     };
 
     return (
@@ -28,6 +40,7 @@ export default function InpBox({ input, taskList }: { input: string, taskList : 
 }
 
 export function DelBox({taskList} : {taskList : String[]}){
+
 
 }
 
