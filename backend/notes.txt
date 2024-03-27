@@ -1,0 +1,7 @@
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+- documentation regarding mongodb innit on systems
+
+mongosh to start mongo shell
+
+using python connector for mongo and fastapi for routing
+

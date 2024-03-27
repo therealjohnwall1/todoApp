@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, TextInput,Text, StyleSheet} from 'react-native';
 
-export default function InpBox({ input, taskList }: { input: string, taskList: String[] }) {
+export default function InpBox({ input, taskList }: { input: string, taskList : String[] }) {
     const [inputValue, setInputValue] = useState('');
 
     const [taskAdded, setTaskAdded] = useState(false);
@@ -25,6 +25,10 @@ export default function InpBox({ input, taskList }: { input: string, taskList: S
             />
         </View>
     );
+}
+
+export function DelBox({taskList} : {taskList : String[]}){
+
 }
 
 

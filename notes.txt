@@ -3,4 +3,3 @@ to run ios or android vers, use tunnel for this device
     npx expo start --tunnel
 
 
-
