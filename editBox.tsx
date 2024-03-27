@@ -1,36 +1,39 @@
 import React, {useState} from 'react';
 import {View, TextInput,Text, StyleSheet} from 'react-native';
 
-
-
-export default function inpBox({ input, taskList }: { input: string, taskList: String[] }) {
+export default function InpBox({ input, taskList }: { input: string, taskList: String[] }) {
     const [inputValue, setInputValue] = useState('');
-    
+
     const [taskAdded, setTaskAdded] = useState(false);
 
-    const handleInputChange = (text: string) => {
-        setInputValue(text);
+    const handleInputChange = () => {
+        setInputValue(inputValue);
+        sendToBack(inputValue);
+        setTaskAdded(true);
+        taskList.push(inputValue);
     };
 
-    const submitInput = ()
-
-    function sendToBack({sendInput}: { sendInput: string }) {
+    function sendToBack(sendInput: string) {
         //send to backend
-    }
+    };
 
     return (
         <View style={styles.inpBox}>
-            <TextInput value={inputValue} onChangeText={handleInputChange}
-            onSubmitEditing={}
+            <TextInput value={inputValue}
+            placeholder= 'Enter Input'
+            onSubmitEditing = {handleInputChange}
             />
         </View>
     );
 }
 
+
 const styles = StyleSheet.create({
     inpBox:{
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        height: 200,
+        width: 300
     }
 })

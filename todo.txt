@@ -1,0 +1,5 @@
+to finish today:
+- add crud support for tasks
+- create basic backend server can improve later
+- setup mongodb and link
+wq

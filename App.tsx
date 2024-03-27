@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 // custom components
 import AddButt from './AddButton';
-import inpBox from './editBox';
+import InpBox from './editBox';
 
 type taskEmpty = {
   empty: boolean;
@@ -13,15 +13,17 @@ const initialTaskEmpty: taskEmpty = {
   empty: true,
 };
 
-export default function App() {
 
+export default function App() {
       //if innit task true, then text will prompt user to enter tasks
   return ( 
     <View style={styles.taskContainer}>
       {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
       <AddButt title="Add Tasks" />
-      <inpBox input ={}/>
-      
+
+
+      <InpBox input = "" taskList ={[]}/>
+
     </View>
   );
 }
@@ -34,5 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
+    gap: 10
   },
 });
