@@ -1,4 +1,4 @@
 import {createContext} from 'react';
-import {Tasks} from './taskList';
+import {Task} from './taskList';
 
-export const taskListContext = createContext<Tasks | undefined>(undefined);
+export const taskListContext = createContext<Task | undefined>(undefined);

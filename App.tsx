@@ -5,6 +5,7 @@ import React, {createContext, useContext, useState} from 'react';
 // custom components
 import AddButt from './AddButton';
 import InpBox from './editBox';
+import TaskBar from './taskList'
 
 type taskEmpty = {
   empty: boolean;
@@ -22,13 +23,14 @@ export default function App() {
   const [tasks, setTasks] = useState<string[]>([]);
   
   return (
-
     <View style={styles.taskContainer}>
-      {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
-
-      <InpBox input = "" taskList ={tasks}/>
+        {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
+        <TaskBar/>
       
-      <AddButt title="Add Tasks" />
+        {/* <InpBox input = "" taskList ={tasks}/> */}
+        <View style = {styles.controlPanel}>
+          <AddButt title="Add Tasks" />
+        </View>
     </View>
   );
 }
@@ -36,12 +38,19 @@ export default function App() {
 const styles = StyleSheet.create({
   taskContainer: {
     width: '100%',
-    height: '50%', // Modify this line
+    height: '10%', // Modify this line
     flex: 4,
     backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    gap: 10
+    gap: 10,
   },
+
+  controlPanel: {
+    width: '100%',
+    height: '8%',
+    backgroundColor: 'black',
+    alignItems: 'center'
+  }
 });
