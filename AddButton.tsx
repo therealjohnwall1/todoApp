@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View,Button } from 'react-native';
+// import {taskList} from './App';
+
 
 export default function AddButt({title}: {title: string}) {
+    // const [tasks, setTasks] = useContext(taskList);
+    
+    function addTask(){
+        
+    }
+
     return (
         <View style={styles.addButton}>
             <Button
                 title={title}
                 color='black'
+                onPress={addTask}
                 // Style={{ fontWeight: 'bold' }}
             />
         </View>

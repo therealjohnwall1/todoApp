@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import React, {createContext, useContext, useState} from 'react';
 
 // custom components
 import AddButt from './AddButton';
@@ -14,16 +15,20 @@ const initialTaskEmpty: taskEmpty = {
 };
 
 
+
 export default function App() {
-      //if innit task true, then text will prompt user to enter tasks
-  return ( 
+  //if innit task true, then text will prompt user to enter tasks
+
+  const [tasks, setTasks] = useState<string[]>([]);
+  
+  return (
+
     <View style={styles.taskContainer}>
       {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
+
+      <InpBox input = "" taskList ={tasks}/>
+      
       <AddButt title="Add Tasks" />
-
-
-      <InpBox input = "" taskList ={[]}/>
-
     </View>
   );
 }
