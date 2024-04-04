@@ -1,37 +1,76 @@
-import React, { useContext } from 'react';
-import { StyleSheet, View,Button } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View,Button, Modal, Text, TextInput } from 'react-native';
 // import {taskList} from './App';
+import {taskListContext} from './context';
 
 
 export default function AddButt({title}: {title: string}) {
     // const [tasks, setTasks] = useContext(taskList);
+    const [isModalVisible, setIsModalVisible] = useState(false);
     
-    function addTask(){
+    const handleButtonPress = () =>{
+        setIsModalVisible(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalVisible(false);
+    };
+
+    function newTask(){
+        
+    }
+    function handleInputChange(){
         
     }
 
     return (
         <View style={styles.addButton}>
-            <Button
-                title={title}
-                color='black'
-                onPress={addTask}
-                // Style={{ fontWeight: 'bold' }}
-            />
+            <Button title={title} color='white' onPress={handleButtonPress} />
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isModalVisible}
+                onRequestClose={handleCloseModal}
+            >
+                <View style={styles.modalContainer}>
+                    <Text style ={styles.textInput}> Add a New Task</Text>
+                    {newTask && (
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="Enter task description"
+                            // value={newTask.toString()}
+                            // onChangeText={handleInputChange}
+                        />
+                    )}
+                    <View style={styles.buttonContainer}>
+                        {/* <Button title="Add" onPress={handleAddTask} /> */}
+                        <Button title="Cancel" color='red' onPress={handleCloseModal} />
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
-}
+    };
 
 const styles = StyleSheet.create({
-    addButton:{
-        alignItems: 'center',
+    addButton: {
+        // ... button styles
+    },
+    modalContainer: {
+        flex: 3, 
         justifyContent: 'center',
-        backgroundColor: 'white',
-
-
-        padding: 10,
-        borderRadius: 5,
-        width: 200,
-        height: 70, 
-    }
-})
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: 'grey', 
+        borderRadius: 10, 
+    },
+    textInput: {
+        fontSize: 40, // Add the desired font size here
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+        fontSize: 40,
+    },
+});

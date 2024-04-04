@@ -7,13 +7,11 @@ export interface Task{
     body: string; 
 }
 
-
 export default function TaskBar(){
     const [taskList, setTaskList] = useState<Task[]>([
         { id: '1', body: 'Complete homework' },
         { id: '2', body: 'Buy groceries' }
     ]);
-
 
     const renderItem = ({ item }: { item: Task }) => (
         <View style={{ marginVertical: 10 }}>
@@ -36,10 +34,18 @@ export default function TaskBar(){
 function SingleTask({ task }: { task: Task }) {
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10 }}>
-            <View style={{ width: 200, height: 50, backgroundColor: 'lightgray', justifyContent: 'center', paddingLeft: 10 }}>
-                <Text>{task.body}</Text>
-                
+            <View style={{ width: 500, height: 70, backgroundColor: '#333', justifyContent: 'center', paddingLeft: 10, paddingRight: 10, paddingTop: 10 }}>
+                <Text style={{ fontSize: 20, color: '#fff' }}>{task.body}</Text>
+                <Button
+                    onPress={() => deleteTask({ task })}
+                    title='Mark as Completed.'
+                    color='green'
+                />
             </View>
         </View>
     );
+}
+
+function deleteTask({task}: {task:Task}){
+
 }

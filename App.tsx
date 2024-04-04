@@ -15,8 +15,6 @@ const initialTaskEmpty: taskEmpty = {
   empty: true,
 };
 
-
-
 export default function App() {
   //if innit task true, then text will prompt user to enter tasks
 
