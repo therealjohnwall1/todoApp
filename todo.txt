@@ -1,3 +1,5 @@
 to finish over break/before work:
+- learn and fix context -> make task list a context
+	- if not, make task list a global var then work on backend and database
 - connect database with backend
 - connect backend with frontend

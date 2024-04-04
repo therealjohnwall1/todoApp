@@ -17,12 +17,30 @@ export default function AddButt({title}: {title: string}) {
         setIsModalVisible(false);
     };
 
-    function pushTask({task}: {task: Task}){
+    function pushTask({task_body}: {task_body: string}){
+        const task: Task = {
+            id: Math.random().toString(),
+            body: task_body,
+        };
+
         if (tasks && tasks?.addTask){
-            tasks.addTask(task);
+            tasks?.addTask(task);
         }
-        
     }
+
+    const [taskText, setTaskText] = useState('');
+
+    const handleTaskTextChange = (text: string) => {
+        setTaskText(text);
+    };
+
+    const handleAddTask = () => {
+        pushTask({ task_body: taskText });
+        console.log("Task added, " + taskText);
+        setTaskText('');
+        console.log("all tasks: " + tasks);
+        handleCloseModal();
+    };
 
     return (
         <View style={styles.addButton}>
@@ -34,14 +52,16 @@ export default function AddButt({title}: {title: string}) {
                 onRequestClose={handleCloseModal}
             >
                 <View style={styles.modalContainer}>
-                    <Text style ={styles.textInput}> Add a New Task</Text>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="Enter task "
-                            onSubmitEditing={pushTask}
-                        />
+                    <Text style={styles.textInput}> Add a New Task</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder="Enter task"
+                        value={taskText}
+                        onChangeText={handleTaskTextChange}
+                        onSubmitEditing={handleAddTask}
+                    />
                     <View style={styles.buttonContainer}>
-                        {/* <Button title="Add" onPress={handleAddTask} /> */}
+                        <Button title="Add" onPress={handleAddTask} />
                         <Button title="Cancel" color='red' onPress={handleCloseModal} />
                     </View>
                 </View>

@@ -39,9 +39,7 @@ export default function InpBox({ input, taskList }: { input: string, taskList : 
 
 export function DelBox({taskList} : {taskList : String[]}){
 
-
 }
-
 
 const styles = StyleSheet.create({
     inpBox:{
