@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, View,Button, Modal, Text, TextInput } from 'react-native';
-// import {taskList} from './App';
-import {taskListContext} from './context';
+
+import {taskListContext, Task} from './taskList';
 
 
 export default function AddButt({title}: {title: string}) {
@@ -16,10 +16,7 @@ export default function AddButt({title}: {title: string}) {
         setIsModalVisible(false);
     };
 
-    function newTask(){
-        
-    }
-    function handleInputChange(){
+    function pushTask({task}: {task: Task}){
         
     }
 
@@ -34,14 +31,11 @@ export default function AddButt({title}: {title: string}) {
             >
                 <View style={styles.modalContainer}>
                     <Text style ={styles.textInput}> Add a New Task</Text>
-                    {newTask && (
                         <TextInput
                             style={styles.textInput}
-                            placeholder="Enter task description"
-                            // value={newTask.toString()}
-                            // onChangeText={handleInputChange}
+                            placeholder="Enter task "
+                            onSubmitEditing={pushTask}
                         />
-                    )}
                     <View style={styles.buttonContainer}>
                         {/* <Button title="Add" onPress={handleAddTask} /> */}
                         <Button title="Cancel" color='red' onPress={handleCloseModal} />

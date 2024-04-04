@@ -1,11 +1,21 @@
-import {useState} from 'react';
+import {createContext, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, Button} from 'react-native';
-import {taskListContext} from './context';
 
 export interface Task{
     id: string;
     body: string; 
 }
+
+export const taskListContext = createContext<Task[] | undefined>(undefined);
+
+export function appendTaskList({task}:{task: Task}){
+    
+}
+
+export function deleteTaskList({task}:{task: Task}){
+
+}
+
 
 export default function TaskBar(){
     const [taskList, setTaskList] = useState<Task[]>([
