@@ -5,7 +5,8 @@ import {taskListContext, Task} from './taskList';
 
 
 export default function AddButt({title}: {title: string}) {
-    // const [tasks, setTasks] = useContext(taskList);
+    
+    const tasks = useContext(taskListContext);
     const [isModalVisible, setIsModalVisible] = useState(false);
     
     const handleButtonPress = () =>{
@@ -17,6 +18,9 @@ export default function AddButt({title}: {title: string}) {
     };
 
     function pushTask({task}: {task: Task}){
+        if (tasks && tasks?.addTask){
+            tasks.addTask(task);
+        }
         
     }
 

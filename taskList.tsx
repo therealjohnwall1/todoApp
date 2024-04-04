@@ -6,15 +6,25 @@ export interface Task{
     body: string; 
 }
 
-export const taskListContext = createContext<Task[] | undefined>(undefined);
+// export const taskListContext = createContext<Task[] | undefined>(undefined);
+export const taskListContext = createContext<{
+    tasks: Task[] | undefined;
+    addTask: (newTask: Task) => void;
+  } | undefined>(undefined);
 
-export function appendTaskList({task}:{task: Task}){
-    
-}
-
-export function deleteTaskList({task}:{task: Task}){
-
-}
+  const TaskProvider = ({toAdd}:{toAdd: Task}) => {
+    const [tasks, setTasks] = useState<Task[]>([]);
+  
+    const addTask = (newTask: Task) => {
+      setTasks([...tasks, newTask]); // Add new task to the array
+    };
+  
+    return (
+      <taskListContext.Provider value={{ tasks, addTask }}>
+        toAdd
+      </taskListContext.Provider>
+    );
+  };
 
 
 export default function TaskBar(){
@@ -30,7 +40,7 @@ export default function TaskBar(){
     );
 
     return (
-        <taskListContext.Provider value={taskList}>
+        <taskListContext.Provider value={{ tasks: taskList, addTask: () => {} }}>
             <FlatList
                 data={taskList} 
                 renderItem={renderItem}
