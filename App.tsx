@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Button } from 'react-native';
 import React, { useContext, useState} from 'react';
 
 // custom components
@@ -8,29 +8,24 @@ import TaskBar from './taskList'
 
 //use context if more layers in app
 
-type taskEmpty = {
-  empty: boolean;
-};
-
-const initialTaskEmpty: taskEmpty = {
-  empty: true,
-};
-
 export default function App() {
   //if innit task true, then text will prompt user to enter tasks
 
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<string[]>(["Hello world"]);
   
-  return (
+    return (
     <View style={styles.taskContainer}>
-        {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
-        <TaskBar tasks = {tasks} onUpdateTasks = {setTasks} />
+        {tasks.length === 0 && <Text>Start adding to your todolist!</Text>}
+
+        <TaskBar taskList = {tasks} onUpdateTasks = {setTasks} />
         <View style = {styles.controlPanel}>
-          <AddButt tasks = {tasks} onUpdateTasks = {setTasks}/>
+          <AddButt taskList = {tasks} onUpdateTasks = {setTasks}/>
         </View>
     </View>
   );
 }
+
+const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   taskContainer: {
@@ -43,10 +38,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 10,
   },
-
   controlPanel: {
     width: '100%',
-    height: '10%',
+    height: screenHeight * 0.15,
     backgroundColor: 'black',
     alignItems: 'center'
   }

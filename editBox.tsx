@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import {View, TextInput,Text, StyleSheet} from 'react-native';
 
-// require('dotenv').config()
-
-
 export default function InpBox({ input, taskList }: { input: string, taskList : String[] }) {
     const [inputValue, setInputValue] = useState('');
 

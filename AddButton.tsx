@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View,Button, Modal, Text, TextInput } from 'react-native';
 
-interface addProp{
-    task: string;
-    addTask(task: string) : void;
-}
 
 export default function AddButt({taskList, onUpdateTasks}:{taskList: string[], onUpdateTasks(newTasks: string[]): void}) {
     
@@ -18,17 +14,14 @@ export default function AddButt({taskList, onUpdateTasks}:{taskList: string[], o
         setIsModalVisible(false);
     };
 
-    function pushTask({task_body}: {task_body: string}){
-        const task: Task = {
-            id: Math.random().toString(),
-            body: task_body,
-        };
+    const addTask = (taskToAdd: string) => {
+        const updatedTaskList = [...taskList, taskToAdd];
+        console.log("new tasklist = " + updatedTaskList);
+        // const newTaskList = taskList.push(taskToAdd)
+        onUpdateTasks(updatedTaskList);
+    };
 
-        if (tasks && tasks?.addTask){
-            tasks?.addTask(task);
-        }
-    }
-
+    //for text currently in the <TextInput>
     const [taskText, setTaskText] = useState('');
 
     const handleTaskTextChange = (text: string) => {
@@ -36,10 +29,10 @@ export default function AddButt({taskList, onUpdateTasks}:{taskList: string[], o
     };
 
     const handleAddTask = () => {
-        pushTask({ task_body: taskText });
+        addTask(taskText);
         console.log("Task added, " + taskText);
         setTaskText('');
-        console.log("all tasks: " + tasks);
+        console.log("all tasks: " + {taskList});
         handleCloseModal();
     };
 

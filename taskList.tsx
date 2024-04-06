@@ -1,30 +1,28 @@
 import {View, Text, FlatList, Button} from 'react-native';
 
-interface singleTaskProps{
-    task: string;
-    handleDelete(task: string) : void;
-}
-
 export default function TaskBar({taskList, onUpdateTasks}: {taskList: string[], onUpdateTasks(newTasks: string[]): void}) {
 
     const handleDelete = (taskToDel: string) => {
-        newTaskList = taskList.filter((task) => task !== taskToDel);
+        const newTaskList = taskList.filter((task) => task !== taskToDel);
         onUpdateTasks(newTaskList);
     }
 
-    const renderItem = ({ item }: { item: string }) => {
-        <View style={{ marginVertical: 10 }}>
-            <SingleTask task = {item} onDelete = {handleDelete}/>
-        </View>
+    const renderItem = ({ item }: { item: string}) => {
+        return(
+            <View style={{ marginVertical: 10 }}>
+                <SingleTask task = {item} />
+            </View>
+        );
     }
 
-    function SingleTask({task, onDelete}: singleTaskProps) {
+    function SingleTask({task}:{task:string}) {
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10 }}>
                 <View style={{ width: 500, height: 70, backgroundColor: '#333', justifyContent: 'center', paddingLeft: 10, paddingRight: 10, paddingTop: 10 }}>
                     <Text style={{ fontSize: 20, color: '#fff' }}>{task}</Text>
                     <Button
-                        onPress=  {onDelete(task)}
+                    //wrap onPress in function so it only runs when button is pressed, not rendering
+                        onPress={() => handleDelete(task)}
                         title='Mark as Completed.'
                         color='green'
                     />
@@ -42,6 +40,6 @@ export default function TaskBar({taskList, onUpdateTasks}: {taskList: string[], 
                 contentContainerStyle={{alignItems: "stretch"}}
             />
         </View>
-        );
+    );
 }
 
