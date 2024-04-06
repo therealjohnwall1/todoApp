@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar, createContext } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import React, {createContext, useContext, useState} from 'react';
 
@@ -6,6 +6,8 @@ import React, {createContext, useContext, useState} from 'react';
 import AddButt from './AddButton';
 import InpBox from './editBox';
 import TaskBar from './taskList'
+
+//use context if more layers in app
 
 type taskEmpty = {
   empty: boolean;
@@ -23,7 +25,7 @@ export default function App() {
   return (
     <View style={styles.taskContainer}>
         {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
-        <TaskBar/>
+        <TaskBar tasks = tasks/>
       
         {/* <InpBox input = "" taskList ={tasks}/> */}
         <View style = {styles.controlPanel}>
