@@ -17,7 +17,7 @@ export default function TaskBar({taskList, onUpdateTasks}: {taskList: string[], 
 
     function SingleTask({task}:{task:string}) {
         return (
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10 }}>
+            <View style={{ flexDirection: 'column', alignItems: 'center', marginVertical: 5 }}>
                 <View style={{ width: 500, height: 70, backgroundColor: '#333', justifyContent: 'center', paddingLeft: 10, paddingRight: 10, paddingTop: 10 }}>
                     <Text style={{ fontSize: 20, color: '#fff' }}>{task}</Text>
                     <Button
