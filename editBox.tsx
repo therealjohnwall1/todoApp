@@ -25,7 +25,7 @@ export default function InpBox({ input, taskList }: { input: string, taskList : 
         // else {
         //     console.error("Backend route is not defined");
         // }
-    };
+    }
 
     return (
         <View style={styles.inpBox}>

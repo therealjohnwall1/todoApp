@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View,Button, Modal, Text, TextInput } from 'react-native';
 
-import {taskListContext, Task} from './taskList';
+interface addProp{
+    task: string;
+    addTask(task: string) : void;
+}
 
-
-export default function AddButt({title}: {title: string}) {
+export default function AddButt({taskList, onUpdateTasks}:{taskList: string[], onUpdateTasks(newTasks: string[]): void}) {
     
-    const tasks = useContext(taskListContext);
     const [isModalVisible, setIsModalVisible] = useState(false);
     
     const handleButtonPress = () =>{
@@ -44,7 +45,7 @@ export default function AddButt({title}: {title: string}) {
 
     return (
         <View style={styles.addButton}>
-            <Button title={title} color='white' onPress={handleButtonPress} />
+            <Button title={"Add Task"} color='white' onPress={handleButtonPress} />
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -68,7 +69,7 @@ export default function AddButt({title}: {title: string}) {
             </Modal>
         </View>
     );
-    };
+}
 
 const styles = StyleSheet.create({
     addButton: {

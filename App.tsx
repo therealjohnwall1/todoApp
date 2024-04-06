@@ -1,6 +1,5 @@
-import { StatusBar, createContext } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import React, {createContext, useContext, useState} from 'react';
+import React, { useContext, useState} from 'react';
 
 // custom components
 import AddButt from './AddButton';
@@ -25,11 +24,9 @@ export default function App() {
   return (
     <View style={styles.taskContainer}>
         {initialTaskEmpty.empty && <Text>Start adding to your todolist!</Text>}
-        <TaskBar tasks = tasks/>
-      
-        {/* <InpBox input = "" taskList ={tasks}/> */}
+        <TaskBar tasks = {tasks} onUpdateTasks = {setTasks} />
         <View style = {styles.controlPanel}>
-          <AddButt title="Add Tasks" />
+          <AddButt tasks = {tasks} onUpdateTasks = {setTasks}/>
         </View>
     </View>
   );
@@ -49,7 +46,7 @@ const styles = StyleSheet.create({
 
   controlPanel: {
     width: '100%',
-    height: '8%',
+    height: '10%',
     backgroundColor: 'black',
     alignItems: 'center'
   }
