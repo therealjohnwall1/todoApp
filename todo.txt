@@ -1,4 +1,4 @@
 to finish over break/before work:
-	- if not, make task list a global var then work on backend and database
-- connect database with backend
 - connect backend with frontend
+- make save button to push changes on frontend
+- format frontend, make look nicer
