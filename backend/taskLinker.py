@@ -1,39 +1,32 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from dbConnector import Connector
 from dotenv import load_dotenv
 import os
 from pydantic import BaseModel
 
-# Building model for request bodies
 class Task(BaseModel):
-    text : str
-    # time : str
+    task_body : str
 
+    # mongoDB stores it time in utc format
 
 app = FastAPI();
 connector = Connector(os.getenv("DATABASE_NAME"),
             os.getenv("COLLECTION_NAME"))
 
-
-# Defining endpoint, home in this case
 @app.get("/") 
 async def root():
-    return {"Hello":"deez nuts"} 
-
+    return {"Home":"Home"} 
 
 # adding new task
 @app.put("/send")
-async def add_document(task : Task):
+async def add_document(task: Task):
     if task:
-        connector.add_task(task.text)
-        return {"message" : "item added to database"}
+        connector.add_task(task.task_body)
+        return {"message": f"{task.task_body} added to database"}
     else:
-        return{"message" : "item not added to database"}
-
+        raise HTTPException(status_code=422, detail="Invalid Item")
 
 # Add ID system later to delete faster
-@app.delete("/delete/{text}")
-def del_document(text : str):
-    connector.del_task(text)
-
-
+@app.delete("/delete/{task_body}")
+def del_document(task_body : str):
+    connector.del_task(task_body)

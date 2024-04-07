@@ -7,6 +7,28 @@ using python connector for mongo and fastapi for routing
 
 ip addr to see address for eth network  interface()
 
-uses uvicorn to run, typically on port 8000
-start app with uvicorn to see info
+mongosh:
+- check running processes 
+	ps aux | grep mongo
 
+Making a user:
+
+db.createUser({
+  user: "andy",
+  pwd: "strong_password",
+  roles: [ { role: "dbOwner" } ]
+})
+
+
+ls - show dbs
+use <db> 
+db.createCollection(collecetionName)
+db.collectionName.insertOne(documentData) - insert documentation
+
+finding documents:
+db.collectionName.find({info/key})
+
+
+uses uvicorn to run, typically on port 8000
+
+to run uvicorn taskLinker:app --reload
