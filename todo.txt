@@ -1,4 +1,5 @@
 to finish over break/before work:
+- create login page
 - connect backend with frontend
 - make save button to push changes on frontend
 - format frontend, make look nicer

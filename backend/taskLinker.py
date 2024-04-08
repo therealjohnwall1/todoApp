@@ -30,7 +30,6 @@ async def add_document(task: Task):
         print("db fails")
         raise HTTPException(status_code=422, detail="Invalid Item")
 
-
 # Add ID system later to delete faster
 @app.delete("/delete")
 def del_document(task : Task):
@@ -39,4 +38,4 @@ def del_document(task : Task):
 
 @app.delete("/wipe")
 def wipe_document():
-    connector.wipe()
+    connector.wipe_tasks()

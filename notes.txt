@@ -4,4 +4,6 @@ to run ios or android vers, use tunnel for this device
 
 **--tunnel** used to run app on a url over the internet rather then on local network
 
+- make sure to use ide and save changes IN WSL for hot refresh to actually work 
+
 

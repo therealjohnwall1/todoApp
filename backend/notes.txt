@@ -21,7 +21,9 @@ db.createUser({
 
 
 ls - show dbs
-use <db> 
+use <db>
+ls collections - show collections
+ 
 db.createCollection(collecetionName)
 db.collectionName.insertOne(documentData) - insert documentation
 
