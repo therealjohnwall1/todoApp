@@ -108,8 +108,7 @@ class Connector:
             self.delete_task("task_text")
     
     # Will iterate through entire collection, place in array and return 
+    # add support to only iter through first 50
     def pull(self):
-        arr = []
-        for task_id in self.collection.find_one({"_id": self.user_doc_id}):
-            arr.append(self.collection.find_one({"_id": task_id})["task_text"])
+        arr = list(self.collection.find_one({"_id":self.user_doc_id})["tasks"])  
         return arr

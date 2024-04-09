@@ -19,14 +19,15 @@ export default function App() {
     return (
       // adding the login page first
     <View style={styles.mainContainer}>
-       <Modal
+      {/* add modal when login requests are ready  */}
+       {/* <Modal
         visible = {displayLoginPage}
         onRequestClose={() => {
           console.log('User has logged in ');
           setdisplayLoginPage(!displayLoginPage);
         }}>
         <LoginPage setIsLoggedIn={setdisplayLoginPage}/>
-      </Modal>
+      </Modal> */}
 
         {tasks.length === 0 && <Text>Start adding to your todolist!</Text>}
         <View style = {styles.taskContainer}>

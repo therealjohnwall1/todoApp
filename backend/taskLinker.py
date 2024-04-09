@@ -25,9 +25,14 @@ connector = Connector(os.getenv("DATABASE_NAME"),
 async def root():
     return {"Home":"Home"}
 
+
 @app.get("/current_user")
 async def get_user():
-    return connector.get_user() 
+    return connector.get_current_user() 
+
+@app.get("/pull_tasks")
+async def get_tasks():
+    return connector.pull()
 
 #Add encryption if time, idk 
 

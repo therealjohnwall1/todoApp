@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import React, {useRef, useState} from 'react';
 
 // temp for now, move to env later
-const local_host = "http://127.0.0.1:8000/"
+const localHost = "http://127.0.0.1:8000/"
 
 export default function LoginPage({setIsLoggedIn}:{setIsLoggedIn(isLoggedIn: boolean):void}){
     const usernameRef = useRef(null);
@@ -27,29 +27,30 @@ export default function LoginPage({setIsLoggedIn}:{setIsLoggedIn(isLoggedIn: boo
     // if makeNewAccount is 0 -> create user
     // else login existing user
 
-    const sendUserInfo = (makeNewAccount: number) =>{
-        const req = new XMLHttpRequest();
-        req.open('PUT', local_host + "edit_user" + makeNewAccount, true)
-        req.setRequestHeader('Content-Type', 'application/json');
-        const jsonData = {
-            name: username,
-            password: password
+1
+    async function sendUserInfo(makeNewAccount: number){
+        const data = {
+            "name": username,
+            "password": password
         }
-        const body = JSON.stringify(jsonData)
-        req.send(body)
 
-        req.onload = () => {
-            if(req.status === 200){
-                const response = JSON.parse(req.responseText)
-                console.log(response)
-                console.log("logging user in ");
-                //will allow user through page
-                setIsLoggedIn(true);
-            }
-            
-            else{
-                console.error("Failed to log user in  ", req.status);
-            }
+        try{
+            const response = await fetch(
+                localHost + "/edit_user/" + makeNewAccount,
+                {
+                    method: "PUT",
+                    headers:{
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+
+            const result = await response.json();
+            console.log("Sent user info to backend", result);
+        }
+
+        catch (error) {
+            console.error("Error sending:", error);
         }
     }
 
@@ -83,8 +84,6 @@ export default function LoginPage({setIsLoggedIn}:{setIsLoggedIn(isLoggedIn: boo
         </View>
     )
 }
-
-
     const styles = StyleSheet.create({
         LoginPage:{
             flexDirection: 'column',
