@@ -1,19 +1,33 @@
-import { Dimensions, StyleSheet, Text, View, Button } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, Button, Modal } from 'react-native';
 import React, { useContext, useState} from 'react';
 
 // custom components
 import AddButt from './AddButton';
 import TaskBar from './taskList'
+import LoginPage from './LoginPage';
 
 //use context if more layers in app
 
 export default function App() {
   //if innit task true, then text will prompt user to enter tasks
 
-  const [tasks, setTasks] = useState<string[]>(["Hello world", "deez nuts", "djksajdlksjdksjd", "ksajdkasjkj"]);
+
+  const [tasks, setTasks] = useState<string[]>([]);
+
+  const [displayLoginPage, setdisplayLoginPage] = useState(true);
   
     return (
+      // adding the login page first
     <View style={styles.mainContainer}>
+       <Modal
+        visible = {displayLoginPage}
+        onRequestClose={() => {
+          console.log('User has logged in ');
+          setdisplayLoginPage(!displayLoginPage);
+        }}>
+        <LoginPage setIsLoggedIn={setdisplayLoginPage}/>
+      </Modal>
+
         {tasks.length === 0 && <Text>Start adding to your todolist!</Text>}
         <View style = {styles.taskContainer}>
         <TaskBar taskList = {tasks} onUpdateTasks = {setTasks} />
