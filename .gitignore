@@ -34,4 +34,7 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+.vscode
+.gitignore
 toread.txt
+todo.txt

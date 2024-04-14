@@ -12,14 +12,14 @@ export default function App() {
   //if innit task true, then text will prompt user to enter tasks
 
 
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<string[]>(["deez nuts", "hello world", "gogogogogo"]);
 
   const [displayLoginPage, setdisplayLoginPage] = useState(true);
   
     return (
       // adding the login page first
     <View style={styles.mainContainer}>
-      {/* add modal when login requests are ready  */}
+      {/* add modal when login requests are ready */}
        {/* <Modal
         visible = {displayLoginPage}
         onRequestClose={() => {
