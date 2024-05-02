@@ -1,5 +1,0 @@
-to finish over break/before work:
-- make login page popup and finish before the user can acess the main app
-- connect backend with frontend
-- make save button to push changes on frontend
-- format frontend, make look nicer

@@ -2,16 +2,14 @@ import { Dimensions, StyleSheet, Text, View, Button, Modal } from 'react-native'
 import React, { useContext, useState} from 'react';
 
 // custom components
-import AddButt from './AddButton';
-import TaskBar from './taskList'
+import AddButt from './src/custom_components/AddButton';
+import TaskBar from './src/pages/taskList'
 import LoginPage from './LoginPage';
 
 //use context if more layers in app
 
 export default function App() {
   //if innit task true, then text will prompt user to enter tasks
-
-
   const [tasks, setTasks] = useState<string[]>(["deez nuts", "hello world", "gogogogogo"]);
 
   const [displayLoginPage, setdisplayLoginPage] = useState(true);
